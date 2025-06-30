@@ -33,6 +33,7 @@ app.get("/chats", async (req, res) => {
 
 //New Route
 app.get("/chats/new", (req, res) => {
+    throw new ExpresError(404, "Page Not Found!");
     res.render("new.ejs");
 })
 
@@ -55,6 +56,9 @@ app.post("/chats", async (req, res) => {
 app.get("/chats/:id", async (req, res, next) => {
     let {id} = req.params;
     const chat = await Chat.findById(id);
+    if(!chat){
+        throw new ExpresError(404, "Chat not found!");
+    }
     res.render("edit.ejs", {chat});
 });
 
