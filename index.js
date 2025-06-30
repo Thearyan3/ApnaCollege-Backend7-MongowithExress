@@ -20,7 +20,7 @@ main()
 );
 
 async function main() {
-  await mongoose.connect('mongodb://127.0.0.1:27017/whatsapp');
+  await mongoose.connect('mongodb://127.0.0.1:27017/fakewhatsapp');
 }
 
 //Index Route
@@ -56,6 +56,8 @@ app.post("/chats", (req, res) => {
 
     res.redirect("/chats");
 });
+
+
 
 //Edit Route
 app.get("/chats/:id/edit", async (req, res) => {
