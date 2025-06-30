@@ -56,9 +56,9 @@ app.post("/chats", async (req, res) => {
 app.get("/chats/:id", async (req, res, next) => {
     let {id} = req.params;
     const chat = await Chat.findById(id);
-    if(!chat){
-        throw new ExpresError(404, "Chat not found!");
-    }
+    // if(!chat){
+    //     next(new ExpresError(404, "Chat not found!"));
+    // }
     res.render("edit.ejs", {chat});
 });
 
